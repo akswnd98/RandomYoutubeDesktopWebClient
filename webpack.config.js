@@ -1,5 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const { InjectManifest } = require('workbox-webpack-plugin');
 const path = require('path');
+const manifest = require('./pwa/manifest.js');
+const CopyPlugin = require('copy-webpack-plugin');
+const fs = require('fs');
 
 module.exports = {
   entry: {
@@ -8,13 +13,14 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name]_bundle.js',
-    publicPath: '/desktop',
+    publicPath: '/desktop/',
   },
   resolve: {
     alias: {
       '@/src': path.resolve(__dirname, 'src'),
       '@/assets': path.resolve(__dirname, 'assets'),
       '@/web-client-common': path.resolve(__dirname, 'web-client-common'),
+      '@/pwa': path.resolve(__dirname, 'pwa'),
     },
     extensions: ['.ts', '.js'],
   },
@@ -81,6 +87,12 @@ module.exports = {
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/index.html'),
     }),
+    new WebpackPwaManifest(manifest),
+    new InjectManifest({
+      swSrc: path.resolve(__dirname, 'pwa/sw.js'),
+      swDest: 'sw.js',
+      maximumFileSizeToCacheInBytes: 500 * 1024 * 1024,
+    }),
   ],
   devServer: {
     port: 8080,
@@ -93,6 +105,10 @@ module.exports = {
     },
     watchFiles: {
       paths: ['*.ts', '*.scss', '*.css'],
+    },
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, '../ssl/ry.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, '../ssl/ry.crt')),
     },
   },
 };

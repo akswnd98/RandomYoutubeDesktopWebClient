@@ -18,3 +18,9 @@ import { GetRandomYoutubeIdsResponse } from '@/src/common';
 
   container.get<AppendYoutubeIdsNotifier>(SYMBOLS.AppendYoutubeIdsNotifier).notify({ newIds: (await axios.get<GetRandomYoutubeIdsResponse>('/api/randomYoutubeIds')).data.ids });
 })();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/desktop/sw.js');
+  });
+}
