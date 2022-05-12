@@ -34,7 +34,7 @@ export default class Bottom extends OwlElement {
     render(
       html`
         <div id='title-div'>
-          ${payload.title}
+          <p id='title'>${payload.title}</p>
         </div>
         <div id='author-div'>
           <p id='author'>${payload.authorName}</p>

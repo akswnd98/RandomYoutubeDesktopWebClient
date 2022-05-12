@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name]_bundle.js',
-    publicPath: '/',
+    publicPath: '/desktop',
   },
   resolve: {
     alias: {
@@ -79,16 +79,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       chunks: ['public'],
       filename: 'index.html',
-      template: './src/index.html',
+      template: path.resolve(__dirname, 'src/index.html'),
     }),
   ],
   devServer: {
-    static: [
-      {
-        directory: path.resolve(__dirname, 'assets'),
-        publicPath: '/assets',
-      },
-    ],
     port: 8080,
     historyApiFallback: true,
     proxy: {
