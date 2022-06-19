@@ -1,0 +1,21 @@
+{
+  "icons": [
+    {
+      "src": "/desktop/icon_192x192.27882fb924abee3dff13cc079071b4a9.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/desktop/icon_512x512.0d3674d26ef6f1a0f6561d51fe2409a4.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "name": "random youtube",
+  "short_name": "random youtube",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "random youtube recomandation",
+  "scope": "."
+}

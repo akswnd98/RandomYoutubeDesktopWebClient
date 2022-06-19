@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx webpack serve --mode=development"
+    "dev": "npx webpack serve --mode=development",
+    "build": "npx webpack --mode=production"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "babel-loader": "^8.2.5",
     "babel-plugin-transform-metadata": "^4.0.2",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "reflect-metadata": "^0.1.13",
@@ -45,6 +47,7 @@
     "nodemon": "^2.0.16",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^4.0.0",
-    "workbox-precaching": "^6.5.3"
+    "workbox-precaching": "^6.5.3",
+    "workbox-webpack-plugin": "^6.5.3"
   }
 }
