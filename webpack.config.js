@@ -106,9 +106,9 @@ module.exports = {
     watchFiles: {
       paths: ['*.ts', '*.scss', '*.css'],
     },
-    // https: {
-    //   key: fs.readFileSync(path.resolve(__dirname, '../ssl/ry.key')),
-    //   cert: fs.readFileSync(path.resolve(__dirname, '../ssl/ry.crt')),
-    // },
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, '../ssl/ry.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, '../ssl/ry.crt')),
+    },
   },
 };
